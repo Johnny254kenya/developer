@@ -1,0 +1,602 @@
+
+/* =====================================
+   PROJECTS SECTION
+===================================== */
+
+.projects {
+  background: #101e28;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 100px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.projects__title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.projects__line {
+  width: 2px;
+  height: 80px;
+  background: #ff725e;
+  position: relative;
+}
+
+.projects__line-dot {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #101e28;
+  border: 2px solid #ff725e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #101e28;
+}
+
+
+/* =====================================
+   PROJECT CARDS
+===================================== */
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.project-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+}
+
+.project-card__info {
+  flex: 1;
+  max-width: 450px;
+}
+
+.project-card__title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tag {
+  background: #1e303a;
+  color: #cbd5e1;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.project-card__desc {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+
+/* =====================================
+   PROJECT BUTTONS
+===================================== */
+
+.project-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn--primary,
+.btn--text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 3px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.btn--primary {
+  background: #ff725e;
+  color: #fff;
+  border: 1px solid #ff725e;
+}
+
+.btn--primary:hover {
+  background: transparent;
+  color: #ff725e;
+}
+
+.btn--text {
+  background: transparent;
+  color: #fff;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #ff725e;
+}
+
+.btn--text:hover {
+  color: #ff725e;
+  border: 1px solid #ff725e;
+}
+
+.arrow-icon {
+  font-size: 16px;
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.btn--text:hover .arrow-icon {
+  transform: translate(3px, -3px);
+}
+
+
+/* =====================================
+   PROJECT 1: CODE EDITOR
+===================================== */
+
+.project-card__editor-wrapper {
+  flex: 1;
+  max-width: 550px;
+  min-width: 0;
+  background: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid #333;
+  overflow: hidden;
+  transition: transform 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+.project-card__editor-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(237, 104, 91, 0.15);
+}
+
+.editor-header {
+  background: #2d2d2d;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.editor-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot--red {
+  background: #ff5f56;
+}
+
+.dot--yellow {
+  background: #ffbd2e;
+}
+
+.dot--green {
+  background: #27c93f;
+}
+
+.editor-title {
+  margin: 0 auto;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.editor-body {
+  padding: 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  min-height: 280px;
+  max-height: 280px;
+  overflow-y: auto;
+  color: #d4d4d4;
+}
+
+.code-line {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.typed-line {
+  font-weight: bold;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+
+/* =====================================
+   PROJECT 2: MOVIE API PREVIEW
+===================================== */
+
+/* Image on LEFT, information on RIGHT */
+
+.project-card--reverse {
+  flex-direction: row;
+}
+
+/* Horizontal movie preview frame */
+
+.project-card__movies-wrapper {
+  flex: 1;
+  max-width: 550px;
+  height: 155px;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 5px;
+  padding: 7px;
+  border: 2px solid #293b46;
+  background: #080d11;
+  overflow: hidden;
+  transition: border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.project-card__movies-wrapper:hover {
+  border-color: #ff725e;
+  box-shadow: 0 10px 30px rgba(255, 114, 94, 0.12);
+}
+
+/* Individual movie images */
+
+.movie-poster {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.movie-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Slightly zoom on hover */
+
+.movie-poster:hover img {
+  transform: scale(1.08);
+}
+
+/* Small divider between posters */
+
+.movie-poster:first-child {
+  border-right: 3px solid #101e28;
+}
+
+
+/* =====================================
+   TABLET RESPONSIVENESS
+===================================== */
+
+@media (max-width: 1000px) {
+  .project-card {
+    gap: 35px;
+  }
+
+  .project-card__title {
+    font-size: 24px;
+  }
+
+  .project-card__movies-wrapper {
+    height: 145px;
+  }
+
+  .project-card__editor-wrapper {
+    max-width: 50%;
+  }
+}
+
+
+/* =====================================
+   MOBILE RESPONSIVENESS
+===================================== */
+
+@media (max-width: 850px) {
+
+  .projects {
+    padding: 80px 20px;
+  }
+
+  .projects__header {
+    margin-bottom: 60px;
+  }
+
+  .projects__title {
+    font-size: 36px;
+  }
+
+  .projects__list {
+    gap: 80px;
+  }
+
+  .project-card,
+  .project-card--reverse {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .project-card__info {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .project-card__tags {
+    justify-content: center;
+  }
+
+  .project-card__actions {
+    justify-content: center;
+  }
+
+  .project-card__editor-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .project-card__movies-wrapper {
+    width: 100%;
+    max-width: 550px;
+    height: 190px;
+    flex: none;
+  }
+
+  .btn--primary,
+  .btn--text {
+    min-width: 130px;
+  }
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+
+  .projects {
+    padding: 65px 16px;
+  }
+
+  .project-card__title {
+    font-size: 23px;
+  }
+
+  .project-card__desc {
+    font-size: 13px;
+  }
+
+  .project-card__movies-wrapper {
+    height: 150px;
+  }
+
+  .editor-body {
+    font-size: 11px;
+    padding: 15px;
+  }
+
+  .project-card__actions {
+    gap: 10px;
+  }
+
+  .btn--primary,
+  .btn--text {
+    padding: 0 15px;
+    font-size: 12px;
+  }
+}
+
+
+
+/* =====================================
+   PROJECT 3: JAVASCRIPT CALCULATOR
+===================================== */
+
+.calculator-preview {
+  flex: 1;
+  max-width: 550px;
+  min-width: 0;
+  height: 175px;
+  overflow: hidden;
+  background: #17191b;
+  border: 2px solid #293b46;
+  padding: 12px 15px;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.calculator-preview:hover {
+  transform: translateY(-5px);
+  border-color: #ff725e;
+  box-shadow: 0 12px 35px rgba(255, 114, 94, 0.15);
+}
+
+.calculator-code {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  line-height: 1.65;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.code-row {
+  color: #d4d4d4;
+}
+
+.code-purple {
+  color: #c586c0;
+}
+
+.code-white {
+  color: #e2e2e2;
+}
+
+.code-yellow {
+  color: #cece75;
+}
+
+.code-blue {
+  color: #61dafb;
+}
+
+.code-comment {
+  color: #686868;
+  font-style: italic;
+  margin-top: 12px;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .calculator-preview {
+    width: 100%;
+    max-width: 550px;
+    flex: none;
+    height: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculator-preview {
+    height: 160px;
+    padding: 10px;
+  }
+
+  .calculator-code {
+    font-size: 9px;
+  }
+}
+
+
+
+/* =====================================
+   PROJECT 4: SAAS LANDING PAGE
+===================================== */
+
+.project-card__saas-wrapper {
+  flex: 1;
+  max-width: 550px;
+  height: 175px;
+  min-width: 0;
+  padding: 7px;
+  background: #080d11;
+  border: 2px solid #293b46;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.project-card__saas-wrapper:hover {
+  transform: translateY(-5px);
+  border-color: #ff725e;
+  box-shadow: 0 12px 35px rgba(255, 114, 94, 0.15);
+}
+
+.saas-preview-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
+}
+
+.project-card__saas-wrapper:hover .saas-preview-img {
+  transform: scale(1.04);
+}
+
+/* Responsive */
+
+@media (max-width: 850px) {
+  .project-card__saas-wrapper {
+    width: 100%;
+    max-width: 550px;
+    flex: none;
+    height: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card__saas-wrapper {
+    height: 150px;
+  }
+}
+
+
+.project-card__saas-wrapper {
+  flex: 1;
+  max-width: 550px;
+  height: 175px;
+  padding: 7px;
+  background: #080d11;
+  border: 2px solid #293b46;
+  overflow: hidden;
+}
+
+.saas-preview-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}

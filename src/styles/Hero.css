@@ -1,0 +1,266 @@
+/* =========================================
+   GLOBAL RESET & BASE
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hero {
+  background: #101e28;
+  color: #fff;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* =========================================
+   HERO CONTENT LAYOUT
+   ========================================= */
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 30px 0; /* Padding adjusted for fixed navbar */
+  min-height: 335px;
+  width: 100%;
+}
+
+.intro {
+  flex: 1;
+  z-index: 2;
+}
+
+.intro h2 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.intro h2 span {
+  color: #ff725e;
+}
+
+.name {
+  font-size: 25px;
+  margin-bottom: 18px;
+  position: relative;
+  padding-left: 28px;
+}
+
+.name::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 2px;
+  background: #ff725e;
+  left: -100px;
+  top: 50%;
+}
+
+.intro h1 {
+  font-size: 34px;
+  margin-bottom: 45px;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  border: 1px solid #ff725e;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: #ff725e;
+}
+
+.btn.primary:hover {
+  background: transparent;
+}
+
+.btn.secondary {
+  background: transparent;
+}
+
+.btn.secondary:hover {
+  background: #ff725e;
+}
+
+/* =========================================
+   HERO IMAGE & RING
+   ========================================= */
+.hero-image {
+  position: relative;
+  width: 390px;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  isolation: isolate;
+}
+
+.circle {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border: 15px solid #ed685b;
+  border-radius: 50%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(237, 104, 91, 0.08);
+  box-shadow: 0 0 45px rgba(237, 104, 91, 0.2);
+  z-index: -1;
+}
+
+.profile-img {
+  position: relative;
+  z-index: 1;
+  width: 270px;
+  height: 320px;
+  object-fit: cover;
+  object-position: center top;
+
+  /* Blend photo edges into hero background */
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+}
+
+/* =========================================
+   CALIBRATOR ARROWS
+   ========================================= */
+.arrow {
+  position: absolute;
+  color: #ed685b;
+  font-size: 55px;
+  font-weight: 200;
+  z-index: 2;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.arrow:hover {
+  color: #fff;
+}
+
+.arrow.left {
+  top: 15px;
+  left: -10px;
+}
+
+.arrow.right {
+  bottom: 5px;
+  right: -5px;
+}
+
+/* =========================================
+   BACK AND FORTH SKILLS MARQUEE
+   ========================================= */
+.skills-marquee {
+  background: #14232e;
+  height: 50px; /* Slim height */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  
+  /* Fade effect on edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.skills-track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  padding: 0 2rem;
+  
+  /* The Animation */
+  animation: slideBackAndForth 15s linear infinite alternate;
+}
+
+/* Pause animation on hover */
+.skills-marquee:hover .skills-track {
+  animation-play-state: paused;
+}
+
+.skill-item {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.skill-item:hover {
+  color: #ed685b;
+}
+
+/* =========================================
+   KEYFRAMES
+   ========================================= */
+@keyframes slideBackAndForth {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    /* Move left until the end of the list is in view, then bounce back */
+    transform: translateX(calc(-100% + 100vw)); 
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (MOBILE)
+   ========================================= */
+@media (max-width: 700px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 120px; /* More padding to clear the fixed navbar */
+  }
+
+  .intro h1 {
+    font-size: 27px;
+    margin-bottom: 25px;
+  }
+
+  .name::before {
+    display: none; /* Hide the horizontal line on mobile */
+  }
+
+  .name {
+    padding: 0;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 350px;
+    margin-top: 30px;
+  }
+}

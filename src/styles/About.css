@@ -1,0 +1,189 @@
+/* =========================================
+   ABOUT SECTION BASE
+   ========================================= */
+.about {
+  background: #101e28; 
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 100px 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.about__container {
+  display: flex;
+  max-width: 1100px;
+  width: 100%;
+  gap: 80px;
+}
+
+/* =========================================
+   LEFT SIDE: SERVICES TIMELINE
+   ========================================= */
+.about__services {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 35px; /* Slightly reduced to fit 4 items perfectly */
+  position: relative;
+  padding-left: 40px; 
+  margin-top: 10px;
+}
+
+/* The vertical orange line */
+.about__services::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15px;
+  bottom: 15px;
+  width: 2px;
+  background: #ff725e;
+  opacity: 0.6;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* The small dots on the vertical line */
+.service-item::before {
+  content: "";
+  position: absolute;
+  left: -45px; 
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #ff725e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #101e28; 
+}
+
+.service-icon {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.service-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* =========================================
+   RIGHT SIDE: CONTENT & STATS
+   ========================================= */
+.about__content {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers the text vertically with the timeline */
+}
+
+.about__title {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.about__bio {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.8;
+  margin-bottom: 50px;
+  max-width: 95%;
+}
+
+/* Stats Row */
+.about__stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-number span {
+  color: #ff725e;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (MOBILE)
+   ========================================= */
+@media (max-width: 850px) {
+  .about {
+    padding: 80px 20px;
+  }
+
+  .about__container {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .about__services {
+    padding-left: 30px;
+    gap: 30px;
+  }
+  
+  .service-item::before {
+    left: -35px;
+  }
+
+  .about__title {
+    font-size: 32px;
+  }
+
+  .about__bio {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .about__stats {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .stat-item {
+    flex: 1 1 40%; 
+  }
+}
+
+@media (max-width: 500px) {
+  .about__stats {
+    flex-direction: column;
+    gap: 24px;
+  }
+}

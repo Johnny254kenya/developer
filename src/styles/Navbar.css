@@ -1,0 +1,213 @@
+/* =========================================
+   INITIAL LOAD ANIMATION
+   ========================================= */
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================
+   NAVBAR CONTAINER
+   ========================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  padding: 1.5rem 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+.navbar--scrolled {
+  padding: 1rem 0;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+/* =========================================
+   BRAND / LOGO
+   ========================================= */
+.navbar__brand {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+  z-index: 1002; /* Keep above mobile menu */
+}
+
+.navbar__brand:hover {
+  color: #60a5fa;
+  text-shadow: 0 0 15px rgba(96, 165, 250, 0.5);
+}
+
+/* =========================================
+   DESKTOP NAVIGATION LINKS
+   ========================================= */
+.navbar__links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__links li {
+  position: relative;
+}
+
+.navbar__links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #60a5fa;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.navbar__links a:hover {
+  color: #ffffff;
+}
+
+.navbar__links a:hover::after {
+  width: 100%;
+}
+
+/* =========================================
+   HAMBURGER TOGGLE BUTTON (Mobile Only)
+   ========================================= */
+.navbar__toggle {
+  display: none; /* Hidden on desktop */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1002; /* Keep above mobile menu */
+  
+  /* Flex column to stack the lines, aligned to the right */
+  flex-direction: column;
+  align-items: flex-end; 
+  gap: 5px; 
+}
+
+/* The 3 lines */
+.navbar__hamburger-top,
+.navbar__hamburger-mid,
+.navbar__hamburger-bot {
+  display: block;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Staggered widths based on your image */
+.navbar__hamburger-top { width: 26px; }
+.navbar__hamburger-mid { width: 18px; }
+.navbar__hamburger-bot { width: 12px; }
+
+/* =========================================
+   ANIMATE INTO "X" WHEN OPEN
+   ========================================= */
+.navbar__toggle--open .navbar__hamburger-top {
+  transform: translateY(7px) rotate(45deg);
+  width: 26px; /* Make it full width so the X looks even */
+}
+
+.navbar__toggle--open .navbar__hamburger-mid {
+  opacity: 0;
+  transform: translateX(-10px); /* Fades out sliding left */
+}
+
+.navbar__toggle--open .navbar__hamburger-bot {
+  transform: translateY(-7px) rotate(-45deg);
+  width: 26px; /* Make it full width so the X looks even */
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  /* Force background on mobile so text is readable even when not scrolled */
+  .navbar {
+    background-color: rgba(15, 23, 42, 0.95);
+    padding: 1rem 0;
+  }
+  
+  .navbar__toggle {
+    display: flex; /* Show hamburger (changed from block to flex) */
+  }
+
+  /* Mobile Menu Panel */
+  .navbar__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem 0;
+    gap: 1.5rem;
+    text-align: center;
+    
+    /* Hidden state */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Open state */
+  .navbar__links--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .navbar__links a {
+    font-size: 1.1rem;
+    display: block;
+    padding: 0.5rem 0;
+  }
+
+  /* Disable the underline animation on mobile */
+  .navbar__links a::after {
+    display: none;
+  }
+  
+  /* Make active/hover state obvious on mobile */
+  .navbar__links a:hover {
+    color: #60a5fa;
+  }
+}
