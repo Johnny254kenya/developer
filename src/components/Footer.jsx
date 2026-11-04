@@ -47,7 +47,7 @@ const Footer = () => {
             <div className="footer__brand">
 
               <a href="#home" className="footer__logo">
-                Jensen<span>.</span>
+                Ronald<span>.</span>
               </a>
 
               <p>
