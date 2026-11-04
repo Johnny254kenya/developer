@@ -22,7 +22,7 @@ function Navbar() {
       <div className="navbar__container">
         
         <a href="#home" className="navbar__brand" onClick={closeMenu}>
-          O. Ronald
+          O. RONALD
         </a>
 
         {/* Hamburger Button */}
